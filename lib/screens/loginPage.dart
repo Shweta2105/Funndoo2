@@ -169,7 +169,7 @@ class LoginPageState extends BaseScreenState {
             ),
             FlatButton(
                 onPressed: () => {
-                      Navigator.pushNamed(context, '/forgot_password')
+                      Navigator.pushNamed(context, '/forgotpassword')
                       //forgot password screen
                     },
                 child: Row(

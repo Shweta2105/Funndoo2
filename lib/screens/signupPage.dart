@@ -1,6 +1,7 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
+import 'package:funndoonotes2/utills/firebase_curd.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:funndoonotes2/screens/base_screen.dart';
 
@@ -258,16 +259,23 @@ class SignUpPageState extends BaseScreenState {
                 height: 50,
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: RaisedButton(
-                  textColor: Colors.white,
-                  color: Colors.blue,
-                  child: Text('SignUp'),
-                  onPressed: () {
-                    print(fnameController.text);
-                    print(lnameController.text);
-                    print(emailController.text);
-                    print(passwordController.text);
-                  },
-                )),
+                    textColor: Colors.white,
+                    color: Colors.blue,
+                    child: Text('SignUp'),
+                    onPressed: () async {
+                      if (fnameController.text.isEmpty &&
+                          lnameController.text.isEmpty &&
+                          emailController.text.isEmpty) {
+                        Navigator.pop(context);
+                      } else {
+                        await Database.addUser(
+                            fname: fnameController.text,
+                            lname: lnameController.text,
+                            emailId: emailController.text,
+                            password: passwordController.text);
+                        Navigator.pop(context);
+                      }
+                    })),
             Container(
                 child: Row(
               children: <Widget>[

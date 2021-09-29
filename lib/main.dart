@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:funndoonotes2/constance/firebaseConfig.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:funndoonotes2/screens/forgotpassword.dart';
 import 'package:funndoonotes2/screens/loginPage.dart';
 import 'package:funndoonotes2/screens/signupPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(MaterialApp(
     title: 'Fundoo Notes',
     theme: ThemeData(
@@ -15,6 +16,7 @@ void main() async {
     initialRoute: '/loginpage',
     routes: {
       '/loginpage': (context) => LoginPage(),
+      '/forgotpassword': (context) => Forgot_Password(),
       '/signup_page': (context) => SignUpPage(),
     },
   ));
